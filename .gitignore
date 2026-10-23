@@ -12,3 +12,6 @@ Thumbs.db
 
 # Logs
 *.logtest-output/
+
+# Test execution reports
+test-output/

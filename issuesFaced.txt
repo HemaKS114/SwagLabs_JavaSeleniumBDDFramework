@@ -24,4 +24,20 @@ Solution:
 		I closed the terminal and manually open the project folder and git bash there and re initiated the git by git init. 
 		it resolved the issue.
 		used command "git rev-parse --show-toplevel" to see the folder structure.
-		
+	
+Github issues in short:
+1. Incorrect repository root: Git identified C:/Users/Hema Priya as the repository root. Opened Git Bash in the project folder and verified the correct path using git rev-parse --show-toplevel.
+
+2. Nested Git repository: An unintended nested .git directory caused an embedded repository warning. Inspected the folder, removed its Git metadata, and deleted the empty folder.
+
+3. Git status error: Removed the nested repository reference from the index using:
+
+    git rm -f --cached -- SwagLabs_JavaSeleniumBDDFramework
+
+4. Generated reports tracked by Git: Added test-output/ to .gitignore and removed generated reports from Git tracking while preserving local copies:
+
+	git rm -r --cached test-output
+
+5. LF/CRLF warning: Identified this as a Windows line-ending warning; no immediate fix was necessary.
+
+Detailed file doc is available in notion page named as "Github issues_SwagLabsFramework"
