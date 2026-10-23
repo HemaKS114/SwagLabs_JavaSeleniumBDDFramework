@@ -23,3 +23,5 @@ Framework Creation:
 5. created StepDef folder under src/test/java and created stepdef files based on pages.
 6. created runner folder under src/test/java and created cucumberRunner file in it provided with cucumberoption
 7. Run the cucumberRunner file as TestNG tests, it should generate the glues for the feature file lines.
+8. Created a Github repository for versioning
+

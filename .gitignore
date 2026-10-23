@@ -11,4 +11,4 @@ target/
 Thumbs.db
 
 # Logs
-*.log
+*.logtest-output/
