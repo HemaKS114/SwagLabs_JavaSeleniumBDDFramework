@@ -1,0 +1,17 @@
+Issues:
+1. Error on POM.xml file "Multiple markers at this line
+- cvc-elt.1.a: Cannot find the declaration of element 'project'. [cvc-elt.1.a]
+- Downloading external resources is disabled."
+Solution:
+	1. Do maven update and maven clean
+	2. if that doesnt resolve, change https:// to http:// of "xsi:schemaLocation". save it and do maven update. --> it worked for me
+
+2. Run as TestNG didnt show up:
+Solution:
+	1. Install TestNG Eclipse plugin -> worked out
+	
+3. When executing -> No tests to run showed up
+Solution:
+	1. Tried creating testng.xml file -> didnt work out
+	2. The problem is I created a feature file with feature and background but without any scenario. so it said no tests found
+	3. Updated background as scenario that resolved the issue.
