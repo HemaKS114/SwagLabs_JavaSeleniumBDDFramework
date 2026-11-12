@@ -7,7 +7,7 @@
    <properties>
 	  <cucumber.version>7.11.1</cucumber.version>
 	  <selenium.version>4.52.0</selenium.version>
-	  <webdrivermanager.version>5.2.1</webdrivermanager.version>
+	  <webdrivermanager.version>6.4.0</webdrivermanager.version>
 	  <testng.version>7.5</testng.version>
 	  <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 	  <maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version>

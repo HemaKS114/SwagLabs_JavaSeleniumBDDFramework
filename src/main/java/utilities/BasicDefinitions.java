@@ -7,10 +7,13 @@ import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import dataproviders.ConfigFileReader;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Scenario;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class BasicDefinitions
 {
@@ -30,7 +33,13 @@ public class BasicDefinitions
 		String browser = config.BrowserName();
 		
 		if(browser.equals("chrome")) {
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+
+		    options.addArguments("--headless=new");
+		    options.addArguments("--window-size=1920,1080");
+		    WebDriverManager.chromedriver().setup();
+
+		    driver = new ChromeDriver(options);
 		}
 		
 		
