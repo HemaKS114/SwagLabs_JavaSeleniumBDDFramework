@@ -44,7 +44,7 @@ pipeline {
 		
 		stage('Edge tests'){
 			steps{
-				bat 'mvn -B clean test -Dbrowser=edge -Dheadless=true'
+				bat 'mvn -B test -Dbrowser=edge -Dheadless=true'
 			}
 		}
     }
