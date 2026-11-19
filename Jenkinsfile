@@ -39,12 +39,22 @@ pipeline {
         stage('Chrome tests'){
 			steps{
 				bat 'mvn -B clean test -Dbrowser=chrome -Dheadless=true'
+				bat '''
+            if not exist target\\BrowserReports\\Chrome mkdir target\\BrowserReports\\Chrome
+            copy /Y target\\ExtentReports\\ExtentReport.html target\\BrowserReports\\Chrome\\ExtentReport.html
+            if exist target\\ExtentReports\\Screenshots xcopy target\\ExtentReports\\Screenshots target\\BrowserReports\\Chrome\\Screenshots /E /I /Y
+        '''
 			}
 		}
 		
 		stage('Edge tests'){
 			steps{
-				bat 'mvn -B test -Dbrowser=edge -Dheadless=true'
+				bat 'mvn -B clean test -Dbrowser=edge -Dheadless=true'
+				bat '''
+            if not exist target\\BrowserReports\\Edge mkdir target\\BrowserReports\\Edge
+            copy /Y target\\ExtentReports\\ExtentReport.html target\\BrowserReports\\Edge\\ExtentReport.html
+            if exist target\\ExtentReports\\Screenshots xcopy target\\ExtentReports\\Screenshots target\\BrowserReports\\Edge\\Screenshots /E /I /Y
+        '''
 			}
 		}
     }
