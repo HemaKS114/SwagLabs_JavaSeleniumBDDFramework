@@ -26,3 +26,12 @@ jobs:
 
       - name: Execute Automation Tests
         run: mvn clean test
+        
+      - name: Upload Extent Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SwagLabs-Extent-Report
+          path: target/ExtentReports/
+          if-no-files-found: warn
+          retention-days: 7
