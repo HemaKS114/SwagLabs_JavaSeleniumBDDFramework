@@ -260,11 +260,11 @@
     		<artifactId>maven-surefire-plugin</artifactId>
     		<version>${maven.surefire.plugin.version}</version>
     		<configuration>
-				<includes>
+				<!--<includes>
 					<include>**/*Tests.java</include>
-				</includes>
+				</includes>-->
 				<suiteXmlFiles>
-					<suiteXmlFile>TestNG.xml</suiteXmlFile>
+					<suiteXmlFile>testng.xml</suiteXmlFile>
 				</suiteXmlFiles>
 			</configuration>
 		</plugin>
