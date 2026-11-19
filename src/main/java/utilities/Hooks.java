@@ -1,6 +1,7 @@
 package utilities;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.apache.commons.compress.utils.FileNameUtils;
@@ -10,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -35,6 +37,12 @@ public class Hooks
 		BasicDefinitions.getTC_id();
 		BasicDefinitions.getTC_Description();
 		BasicDefinitions.getFeatureName();
+		
+		System.out.println(
+		        "STARTED: " + scenario.getName()
+		        + " | Thread: " + Thread.currentThread().getId()
+		        + " | Time: " + LocalDateTime.now()
+		    );
 	}
 	
 	@AfterStep
@@ -52,5 +60,15 @@ public class Hooks
 			Assert.fail("Unable to take screenshot"+e);
 		}
 		
+	}
+	
+	@After
+	public void afterScenario(Scenario scenario) {
+
+	    System.out.println(
+	        "FINISHED: " + scenario.getName()
+	        + " | Thread: " + Thread.currentThread().getId()
+	        + " | Time: " + LocalDateTime.now()
+	    );
 	}
 }
