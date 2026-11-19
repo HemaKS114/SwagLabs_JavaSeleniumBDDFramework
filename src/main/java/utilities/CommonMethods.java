@@ -14,6 +14,8 @@ import org.testng.Assert;
 public class CommonMethods
 {
 	
+	
+	
 	public static JSONObject objRepo;
 	//create null object, create a string to store filepath, then create Json parser object, then read the file using filepath and store it into obj then store it as jsonobject
 	@SuppressWarnings("unchecked")
@@ -23,7 +25,7 @@ public class CommonMethods
 		BasicDefinitions.jsontestdataHashMap.clear();
 		try {
 		
-		String filePath = System.getProperty("user.dir")+File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"TestData"+File.separator+BasicDefinitions.FeatureName.toLowerCase()+"_testdata.json";
+		String filePath = System.getProperty("user.dir")+File.separator+"src"+File.separator+"test"+File.separator+"resources"+File.separator+"TestData"+File.separator+BasicDefinitions.getFeatureName().toLowerCase()+"_testdata.json";
 		
 		obj = new JSONParser().parse(new FileReader(filePath));
 		
@@ -132,13 +134,13 @@ public class CommonMethods
 				LocatorType locatorType = LocatorType.valueOf(dataReference.split(Pattern.quote("|"))[0]);
 				switch (locatorType) {
 				case id:
-					locator = BasicDefinitions.driver.findElement(By.id(dataReference.split(Pattern.quote("|"))[1]));
+					locator = BasicDefinitions.driver.get().findElement(By.id(dataReference.split(Pattern.quote("|"))[1]));
 					break;
 				case xpath:
-					locator = BasicDefinitions.driver.findElement(By.xpath(dataReference.split(Pattern.quote("|"))[1]));
+					locator = BasicDefinitions.driver.get().findElement(By.xpath(dataReference.split(Pattern.quote("|"))[1]));
 					break;
 				case tagname:
-					locator = BasicDefinitions.driver.findElement(By.tagName(dataReference.split(Pattern.quote("|"))[1]));
+					locator = BasicDefinitions.driver.get().findElement(By.tagName(dataReference.split(Pattern.quote("|"))[1]));
 					break;
 				default:
 					System.out.println("no such locator");
@@ -157,8 +159,8 @@ public class CommonMethods
 		try {
 		loadObjects(objRef.split(Pattern.quote("_"))[0].toLowerCase());
 		By locator = getLocator(objRef);
-		value = readTestDatavalues("TestData", BasicDefinitions.TC_id, value);
-		BasicDefinitions.driver.findElement(locator).sendKeys(value);
+		value = readTestDatavalues("TestData", BasicDefinitions.getTC_id(), value);
+		BasicDefinitions.driver.get().findElement(locator).sendKeys(value);
 		System.out.println("Value entered is : "+value);
 
 		}
@@ -174,7 +176,7 @@ public class CommonMethods
 		loadObjects(objRef.split(Pattern.quote("_"))[0].toLowerCase());
 		By locator = getLocator(objRef);
 		
-		BasicDefinitions.driver.findElement(locator).click();
+		BasicDefinitions.driver.get().findElement(locator).click();
 
 		}
 		catch(Exception e) {
@@ -188,8 +190,8 @@ public class CommonMethods
 		
 		loadObjects(objRef.split(Pattern.quote("_"))[0].toLowerCase());
 		By locator = getLocator(objRef);
-		errorMsg = readTestDatavalues("TestData",BasicDefinitions.TC_id,errorMsg);
-		String ActualErrorMsg = BasicDefinitions.driver.findElement(locator).getText();
+		errorMsg = readTestDatavalues("TestData",BasicDefinitions.getTC_id(),errorMsg);
+		String ActualErrorMsg = BasicDefinitions.driver.get().findElement(locator).getText();
 		if(!errorMsg.equalsIgnoreCase(ActualErrorMsg)) {
 			Assert.fail(ActualErrorMsg+ " is not same as "+errorMsg);
 		}

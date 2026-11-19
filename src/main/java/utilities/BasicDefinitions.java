@@ -21,28 +21,49 @@ public class BasicDefinitions
 {
 	
 	public static BasicDefinitions basicDef;
-	public static WebDriver driver;
+//	public static WebDriver driver;
+	
+	public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	public static ThreadLocal<Scenario> scenario = new ThreadLocal<>();
+	
 	
 	static ConfigFileReader config;
-	public static String TC_id = "", TC_Description = "", FeatureName ="";
-	public static Scenario scenario = null;
+//	public static String tc_id = "", tc_Description = "", featureName ="";
+	
+	public static ThreadLocal<String>TC_id = new ThreadLocal<>();
+	public static ThreadLocal<String> TC_Description = new ThreadLocal<>();
+	public static ThreadLocal<String>FeatureName = new ThreadLocal<>();
+//	public static Scenario scenario = null;
 	
 	public static HashMap<String, HashMap<String, HashMap<String, HashMap<String, String>>>> jsontestdataHashMap = new HashMap<>();
+	
+	
+	public static String getTC_id() {
+	    return TC_id.get();
+	}
+
+	public static String getTC_Description() {
+	    return TC_Description.get();
+	}
+
+	public static String getFeatureName() {
+	    return FeatureName.get();
+	}
 	
 	public static void launchBrowser() throws IOException
 	{
 		config =  new ConfigFileReader();
 		String browser = config.BrowserName();
 		
-		if(browser.equals("chrome")) {
-			ChromeOptions options = new ChromeOptions();
-
-		    options.addArguments("--headless=new");
-		    options.addArguments("--window-size=1920,1080");
-		    WebDriverManager.chromedriver().setup();
-
-		    driver = new ChromeDriver(options);
-		}
+//		if(browser.equals("chrome")) {
+//			ChromeOptions options = new ChromeOptions();
+//
+//		    options.addArguments("--headless=new");
+//		    options.addArguments("--window-size=1920,1080");
+//		    WebDriverManager.chromedriver().setup();
+//		    
+//		    
+//		}
 		
 		switch(browser.toLowerCase()) {
 		
@@ -52,15 +73,16 @@ public class BasicDefinitions
 		    options.addArguments("--headless=new");
 		    options.addArguments("--window-size=1920,1080");
 		    WebDriverManager.chromedriver().setup();
-
-		    driver = new ChromeDriver(options);
+		    BasicDefinitions.driver.set(new ChromeDriver(options));
+//		    driver = new ChromeDriver(options);
 		    break;
 		case "edge":
 			EdgeOptions edgeOptions = new EdgeOptions();
 			edgeOptions.addArguments("--headless=new");
 			edgeOptions.addArguments("--window-size=1920,1080");
 			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
+			BasicDefinitions.driver.set(new EdgeDriver(edgeOptions));
+//			driver = new EdgeDriver();
 		
 		}
 		
@@ -70,16 +92,22 @@ public class BasicDefinitions
 	public static void OpenURL()
 	{
 		String url = config.appURL();
-		driver.get(url);
-		driver.manage().window().maximize();	
+//		driver.get(url);
+//		driver.manage().window().maximize();	
+		driver.get().get(url);
+		driver.get().manage().window().maximize();	
 	}
 	
 	@AfterAll
 	public static void teardown()
 	{
-		if(driver!=null) {
-			driver.close();
+		if(driver.get()!=null) {
+//			driver.close();
+			driver.get().close();
+			driver.get().quit();
+			
 		}
+		
 	}
 	
 	

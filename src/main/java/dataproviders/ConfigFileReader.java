@@ -40,7 +40,7 @@ public class ConfigFileReader
 	
 	public void maximizeWindow() {
 		
-		BasicDefinitions.driver.manage().window().maximize();
+		BasicDefinitions.driver.get().manage().window().maximize();
 		
 	}
 }
