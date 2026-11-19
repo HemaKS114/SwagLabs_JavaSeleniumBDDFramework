@@ -24,7 +24,7 @@ Framework Creation:
 6. created runner folder under src/test/java and created cucumberRunner file in it provided with cucumberoption
 7. Run the cucumberRunner file as TestNG tests, it should generate the glues for the feature file lines.
 8. Created a Github repository for versioning
-
+9. Updated framework with the configuration of extent report
 
 Framework Architecture:
 
