@@ -30,11 +30,23 @@ pipeline {
             }
         }
 
-        stage('Build and Run Cucumber Tests') {
+        /*stage('Build and Run Cucumber Tests') {
             steps {
                 bat 'mvn -B clean test'
             }
-        }
+        }*/
+        
+        stage('Chrome tests'){
+			steps{
+				bat 'mvn -B clean test -Dbrowser=chrome -Dheadless=true'
+			}
+		}
+		
+		stage('Edge tests'){
+			steps{
+				bat 'mvn -B clean test -Dbrowser=edge -Dheadless=true'
+			}
+		}
     }
 
     post {
