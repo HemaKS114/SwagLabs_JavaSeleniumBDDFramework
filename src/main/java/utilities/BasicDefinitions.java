@@ -8,6 +8,8 @@ import java.util.HashMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import dataproviders.ConfigFileReader;
 import io.cucumber.java.AfterAll;
@@ -40,6 +42,26 @@ public class BasicDefinitions
 		    WebDriverManager.chromedriver().setup();
 
 		    driver = new ChromeDriver(options);
+		}
+		
+		switch(browser.toLowerCase()) {
+		
+		case "chrome":
+			ChromeOptions options = new ChromeOptions();
+
+		    options.addArguments("--headless=new");
+		    options.addArguments("--window-size=1920,1080");
+		    WebDriverManager.chromedriver().setup();
+
+		    driver = new ChromeDriver(options);
+		    break;
+		case "edge":
+			EdgeOptions edgeOptions = new EdgeOptions();
+			edgeOptions.addArguments("--headless=new");
+			edgeOptions.addArguments("--window-size=1920,1080");
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+		
 		}
 		
 		

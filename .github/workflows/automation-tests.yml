@@ -1,3 +1,4 @@
+
 name: SwagLabs Automation Tests
 
 on:
@@ -13,6 +14,13 @@ jobs:
   automation-tests:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        browser:
+          - chrome
+          - edge
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -25,13 +33,13 @@ jobs:
           cache: maven
 
       - name: Execute Automation Tests
-        run: mvn clean test
-        
+        run: mvn clean test -Dbrowser=${{ matrix.browser }} -Dheadless=true
+
       - name: Upload Extent Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: SwagLabs-Extent-Report
+          name: Extent-Report-${{ matrix.browser }}
           path: target/ExtentReports/
           if-no-files-found: warn
           retention-days: 7
