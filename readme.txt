@@ -25,6 +25,7 @@ Framework Creation:
 7. Run the cucumberRunner file as TestNG tests, it should generate the glues for the feature file lines.
 8. Created a Github repository for versioning
 9. Updated framework with the configuration of extent report
+10. Updated the Jenkins file with triggers with each git push also installed ngrok for access the public host tunneling to keep activate the auto execution via jenkins
 
 Framework Architecture:
 
