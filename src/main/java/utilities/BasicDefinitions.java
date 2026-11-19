@@ -3,6 +3,7 @@
 package utilities;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
@@ -34,6 +35,8 @@ public class BasicDefinitions
 	public static ThreadLocal<String> TC_Description = new ThreadLocal<>();
 	public static ThreadLocal<String>FeatureName = new ThreadLocal<>();
 //	public static Scenario scenario = null;
+	
+	public static ThreadLocal<LocalDateTime> startTime = new ThreadLocal<>();
 	
 	public static HashMap<String, HashMap<String, HashMap<String, HashMap<String, String>>>> jsontestdataHashMap = new HashMap<>();
 	

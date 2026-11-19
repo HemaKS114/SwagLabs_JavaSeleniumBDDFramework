@@ -38,6 +38,20 @@ public class Hooks
 		BasicDefinitions.getTC_Description();
 		BasicDefinitions.getFeatureName();
 		
+		BasicDefinitions.startTime.set(LocalDateTime.now());
+		
+		BasicDefinitions.scenario.get().log(
+			    "Browser: " + System.getProperty("browser", "chrome")
+			);
+
+			BasicDefinitions.scenario.get().log(
+			    "Thread ID: " + Thread.currentThread().getId()
+			);
+
+			BasicDefinitions.scenario.get().log(
+			    "Start Time: " + BasicDefinitions.startTime.get()
+			);
+		
 		System.out.println(
 		        "STARTED: " + scenario.getName()
 		        + " | Thread: " + Thread.currentThread().getId()
@@ -69,6 +83,19 @@ public class Hooks
 	        "FINISHED: " + scenario.getName()
 	        + " | Thread: " + Thread.currentThread().getId()
 	        + " | Time: " + LocalDateTime.now()
+	    );
+	    
+	    LocalDateTime endTime = LocalDateTime.now();
+
+	    BasicDefinitions.scenario.get().log(
+	        "End Time: " + endTime
+	    );
+
+	    BasicDefinitions.scenario.get().log(
+	        "Execution Duration: " +
+	        java.time.Duration.between(
+	            BasicDefinitions.startTime.get(), endTime
+	        ).toMillis() + " ms"
 	    );
 	}
 }
