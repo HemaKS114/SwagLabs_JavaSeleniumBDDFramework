@@ -183,6 +183,18 @@ public class CommonMethods
 		
 	}
 	
+	public static void errorMsgCheck(String errorMsg, String objRef)
+	{
+		
+		loadObjects(objRef.split(Pattern.quote("_"))[0].toLowerCase());
+		By locator = getLocator(objRef);
+		errorMsg = readTestDatavalues("TestData",BasicDefinitions.TC_id,errorMsg);
+		String ActualErrorMsg = BasicDefinitions.driver.findElement(locator).getText();
+		if(!errorMsg.equalsIgnoreCase(ActualErrorMsg)) {
+			Assert.fail(ActualErrorMsg+ " is not same as "+errorMsg);
+		}
+	}
+	
 	
 	
 }

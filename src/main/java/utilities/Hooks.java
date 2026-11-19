@@ -27,15 +27,14 @@ public class Hooks
 	
 	@AfterStep
 	public static void appendScreenshot() {
-		Date date = new Date();
-		String scenarioName = BasicDefinitions.scenario.getName().split("-")[0].trim();
-
+		
 		try {
-		File srcFile = 	((TakesScreenshot)BasicDefinitions.driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir")+File.separator+"screenshot"+File.separator+scenarioName+"_"+date.getTime()+".png"));
+		byte[] screenshot = ((TakesScreenshot)BasicDefinitions.driver).getScreenshotAs(OutputType.BYTES);
+		
+		BasicDefinitions.scenario.attach(screenshot, "image/png", "Screenshot of this step:");
 		}
 		catch(Exception e) {
-			Assert.fail("Unable to  take screenshot"+e);
+			Assert.fail("Unable to take screenshot"+e);
 		}
 		
 	}

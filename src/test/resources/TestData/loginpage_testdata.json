@@ -1,6 +1,8 @@
 {
 	"TestData":
 	{
-		"LP_001":{"username":"standard_user", "Password":"secret_sauce"}
+		"LP_001":{"username":"standard_user", "Password":"secret_sauce"},
+		"LP_002":{"username":"locked_out_user", "Password":"secret_sauce","LockedOutErrorMsg":"Epic sadface: Sorry, this user has been locked out."},
+		"LP_003":{"username":"problem_user", "Password":"secret_sauce"}
 	}
 }

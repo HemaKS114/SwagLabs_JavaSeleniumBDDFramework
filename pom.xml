@@ -153,18 +153,18 @@
 			</exclusions>
 		</dependency>
 <!-- https://mvnrepository.com/artifact/com.vimalselvam/cucumber-extentsreport -->
-<dependency>
+<!--<dependency>
     <groupId>com.vimalselvam</groupId>
     <artifactId>cucumber-extentsreport</artifactId>
     <version>3.1.1</version>
 </dependency>
-
+-->
 <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-<dependency>
+<!--<dependency>
     <groupId>com.aventstack</groupId>
     <artifactId>extentreports</artifactId>
     <version>5.0.9</version>
-</dependency>
+</dependency>-->
 
 <!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
 <dependency>

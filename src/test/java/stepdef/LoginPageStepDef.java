@@ -38,4 +38,10 @@ public void i_click_on_the(String objRef) throws FileNotFoundException, IOExcept
 	CommonMethods.click(objRef);
 }
 
+@When("I verify the {string} on {string} space")
+public void i_verify_the_on_space(String erroMsg, String objRef) {
+   
+	CommonMethods.errorMsgCheck(erroMsg, objRef);
+}
+
 }

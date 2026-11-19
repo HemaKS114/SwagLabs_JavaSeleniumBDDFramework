@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+
+<configuration>
+
+<theme>dark</theme>
+<encoding>UTF-8</encoding>
+<protocol>HTTPS</protocol>
+<documentTitle>SwagLabs Automation Report</documentTitle>
+<reportName>SwagLabs Test Execution Report</reportName>
+<timeStampFormat>dd, MM, yyyy HH:mm:ss</timeStampFormat>
+
+</configuration>
+</extentreports>

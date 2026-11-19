@@ -1,5 +1,6 @@
 {
 	"loginPage_username": "id|user-name",
 	"loginPage_password": "id|password",
-	"loginPage_loginButton": "id|login-button"
+	"loginPage_loginButton": "id|login-button",
+	"loginPage_errorMsg": "xpath|//h3[@role ='alert']"
 }
