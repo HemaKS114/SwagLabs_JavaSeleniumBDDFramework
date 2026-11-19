@@ -49,7 +49,7 @@ pipeline {
 		
 		stage('Edge tests'){
 			steps{
-				bat 'mvn -B clean test -Dbrowser=edge -Dheadless=true'
+				bat 'mvn -B test -Dbrowser=edge -Dheadless=true'
 				bat '''
             if not exist target\\BrowserReports\\Edge mkdir target\\BrowserReports\\Edge
             copy /Y target\\ExtentReports\\ExtentReport.html target\\BrowserReports\\Edge\\ExtentReport.html
